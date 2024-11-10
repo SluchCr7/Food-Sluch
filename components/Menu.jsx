@@ -71,7 +71,7 @@ const Menu = () => {
                                     </div>
                                     <p className='price'>{item.price}</p>   
                                 </div>
-                                <p className='text-center'>{item.text}</p>  
+                                <p className='text-center md:text-left'>{item.text}</p>  
                             </div>
                         </motion.div>
                     ))

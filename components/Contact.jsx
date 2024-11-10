@@ -211,11 +211,11 @@ const Contact = () => {
                     <h1 className='text-xl lg:text-3xl font-bold text-primary uppercase tracking-[2px]'>Contact Us</h1>
                     <div className='w-full flex flex-col items-center gap-1'>
                         <span className='text-sm text-white'>Booking Request</span>
-                        <h1 className='text-3xl lg:text-2xl font-bold text-primary uppercase tracking-[2px]'>+123 456 789</h1>
+                        <h1 className='text-3xl lg:text-2xl text-center  font-bold text-primary uppercase tracking-[2px]'>+123 456 789</h1>
                     </div>
                     <div className="location flex flex-col items-center gap-1">
                         <span className='text-sm text-white'>Location</span>
-                        <h1 className='text-3xl lg:text-2xl font-bold text-primary text-center uppercase tracking-[2px]'>123, Main Street, New York, USA</h1>
+                        <h1 className='text-3xl lg:text-2xl text-center  font-bold text-primary uppercase tracking-[2px]'>123, Main Street, New York, USA</h1>
                     </div>
                     <div className='work flex flex-col items-center gap-1'>
                         <span className='text-sm text-white'>Working Hours</span>

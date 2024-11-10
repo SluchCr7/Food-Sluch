@@ -8,7 +8,6 @@ const Nav = () => {
         { name: "About", link: "about", offset: -80 },
         { name: "Menu", link: "menu", offset: 0 },
         { name: "Contact", link: "contact", offset: 80 },
-        { name: "Shefs", link: "shefs", offset: 100 },
     ]
   return (
     <div className='flex flex-row items-center gap-7'>
