@@ -42,7 +42,7 @@ const Footer = () => {
                                     <span className='text-3xl font-bold text-primary'>{ele.title}</span>
                                     <ul className='flex flex-col w-full gap-3 text-secondary/50'>
                                         {
-                                                ele.links.map((link , index) => {
+                                            ele.links.map((link , index) => {
                                                 return(
                                                     <li className='text-md w-[100px] text-secondary font-bold' key={index}> {link}</li>
                                                 )
