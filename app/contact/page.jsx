@@ -25,11 +25,11 @@ const ContactPage = () => {
                         Get in Touch
                     </motion.h1>
                     <p className="text-lg md:text-xl text-primary font-light">
-                        We'd love to hear from you
+                        We had love to hear from you
                     </p>
                 </div>
             </section>
-
+ 
             <section className="py-20 container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
 

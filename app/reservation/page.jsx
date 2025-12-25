@@ -44,7 +44,7 @@ const ReservationPage = () => {
                     <span className="text-primary font-serif italic text-2xl mb-2 block">Book a Table</span>
                     <h1 className="text-5xl font-serif text-white mb-8">Make a Reservation</h1>
                     <p className="text-white/60 mb-8 leading-relaxed">
-                        Secure your spot at Sluch Restaurant. Whether it's a romantic dinner, a business lunch, or a family celebration, we are ready to serve you.
+                        Secure your spot at Sluch Restaurant. Whether it is a romantic dinner, a business lunch, or a family celebration, we are ready to serve you.
                     </p>
 
                     <div className="space-y-6">

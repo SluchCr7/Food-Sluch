@@ -114,7 +114,7 @@ const AboutPage = () => {
                             <h3 className="text-3xl font-serif text-white mb-2">Alessandro Rossi</h3>
                             <p className="text-primary mb-6">Execuitve Chef</p>
                             <p className="text-white/70 mb-6 italic">
-                                "Cooking is an art, but baking is a science. At Sluch, we combine both to create magic on your plate. My philosophy is simple: respect the ingredients."
+                                Cooking is an art, but baking is a science. At Sluch, we combine both to create magic on your plate. My philosophy is simple: respect the ingredients.
                             </p>
                             <Image
                                 src="/assets/images/signature.png"
