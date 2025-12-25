@@ -1,12 +1,18 @@
-import { JetBrains_Mono } from "next/font/google";
+import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
 import PageAnimation from '@/components/PageAnimation'
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ["latin"]
-  , weight: ["100", "200", "300", "400", "500", "600"]
-  , style: ["normal", "italic"]
-  , variable: "--font-jetBrainsMono"
-})
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-playfair",
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "700", "900"],
+  variable: "--font-lato",
+});
 
 export const metadata = {
   title: "Sluch Resturant",

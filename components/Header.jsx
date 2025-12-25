@@ -1,40 +1,68 @@
-import React from 'react'
+'use client'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Nav from './Nav'
 import MobileNav from './MobileNav'
 import Link from 'next/link'
-import { motion , AnimatePresence} from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+
 const Header = () => {
-  const [header, setheader] = React.useState(false)
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      setheader(true)
-    } else {
-      setheader(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
     }
-  })
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <AnimatePresence mode="wait">
-    <motion.div initial={{top: "-100%"}} animate={{top: "0"}} transition={{duration: 2 , delay : 0.5}} className={`flex items-center justify-between w-full p-6 z-[1000] ${header ? 'bg-accent fixed top-0' : 'bg-transparent'}`}>
+    <AnimatePresence>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'}`}
+      >
+        <div className="container mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
-        <div className='Logo'>
-            <Image src="/assets/images/logo.svg" alt="logo" width={100} height={100}  className='w-full'/>
-        </div>
-        {/* Navigation */}
-        <div className='hidden xl:flex'>
+          <Link href="/" className='relative w-16 h-16'>
+            <Image
+              src="/assets/images/logo.svg"
+              alt="Sluch Logo"
+              fill
+              className='object-contain'
+            />
+          </Link>
+
+          {/* Navigation */}
+          <div className='hidden xl:flex'>
             <Nav />
-        </div>
+          </div>
+
           {/* Mobile Nav */}
-        <div className='xl:hidden'>
+          <div className='xl:hidden'>
             <MobileNav />
+          </div>
+
+          {/* CTA Button */}
+          <div className='hidden xl:flex items-center gap-4'>
+            <Link
+              href="/reservation"
+              className={`
+                        text-xs uppercase tracking-widest font-bold px-6 py-3 rounded-sm transition-all duration-300 border
+                        ${scrolled
+                  ? 'bg-primary text-black border-primary hover:bg-white'
+                  : 'bg-transparent text-white border-white hover:bg-white hover:text-black'
+                }
+                    `}
+            >
+              Book a Table
+            </Link>
+          </div>
         </div>
-        {/* Get Started Button */}
-        <div className='hidden xl:flex items-center gap-4'>
-          <button className='bg-accent-ColorT text-white w-fit flex items-center justify-center text-center rounded-[5px] py-3 px-6 text-xs'>
-            Book a Table
-          </button>
-        </div>
-      </motion.div>
+      </motion.header>
     </AnimatePresence>
   )
 }

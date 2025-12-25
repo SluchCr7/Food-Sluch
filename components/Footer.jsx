@@ -1,65 +1,85 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
-import Fadein from '@/lib/Variants'
+
 const Footer = () => {
-    const LinksFooter = [
+    const FOOTER_LINKS = [
         {
-            id: 1,
-            time: 0.5,
-            title: 'Links',
-            links: ['Home', 'About', 'Menu', 'Contact']
-        }
-        ,
-        {
-            id: 2,
-            time: 1,
-            title: 'Support',
-            links: ['FAQ', 'Privacy Policy', 'Terms & Conditions', 'Cookie Policy', 'Help']
+            title: 'Explore',
+            links: [
+                { name: 'Home', href: '/' },
+                { name: 'About Us', href: '/about' },
+                { name: 'Our Menu', href: '/menu' },
+                { name: 'Reservation', href: '/reservation' },
+                { name: 'Contact', href: '/contact' }
+            ]
         },
         {
-            id: 3,
-            time: 1.5,
-            title: 'Services',
-            links : ["Food" , "Drinks", "Salads", "Snaks","Sea Food" , "Cafe" , "Fast Food"]
+            title: 'Contact',
+            links: [
+                { name: '123 Culinary Avenue, Food City', href: '#' },
+                { name: '+1 (555) 123-4567', href: 'tel:+15551234567' },
+                { name: 'info@sluchrestaurant.com', href: 'mailto:info@sluchrestaurant.com' },
+            ]
+        },
+        {
+            title: 'Social',
+            links: [
+                { name: 'Instagram', href: '#' },
+                { name: 'Facebook', href: '#' },
+                { name: 'Twitter', href: '#' },
+            ]
         }
     ]
-  return (
-    <div className='footer w-full p-[3rem] bg-accent-hover'>
-        <div className='container mx-auto'>
-            <div className='flex flex-col items-center gap-3'>
-                <div className='flex w-full flex-col xl:flex-row items-start xl:items-start gap-6'>
-                    <motion.div variants={Fadein("up" , 0.5)} initial="hidden" whileInView={"visible"} viewport={{ once: false, amount: 0.3 }} className='Logo flex flex-col items-start xl:items-start gap-5'>
-                        <Image src="/assets/images/logo.svg" alt="logo" width={100} height={100} className='' />
-                        <span className='text-3xl font-bold text-primary'>Sluch Resturant</span>
-                        <p className='text-secondary/50 w-[100%] xl:w-[70%]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus perspiciatis soluta quasi obcaecati veniam provident eius dolores nostrum nam reprehenderit sed vel, sapiente dolorum iure eum ab deleniti debitis quis?</p>
-                    </motion.div>
-                    <div className='Links grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[3rem] xl:gap-[15rem]'>
-                        {
-                            LinksFooter.map((ele) => {
-                                return(
-                                <motion.div key={ele.id} variants={Fadein("up" , ele.time)} initial="hidden" whileInView={"visible"} viewport={{ once: false, amount: 0.3 }} className='flex flex-col w-full items-start gap-3'>
-                                    <span className='text-3xl font-bold text-primary'>{ele.title}</span>
-                                    <ul className='flex flex-col w-full gap-3 text-secondary/50'>
-                                        {
-                                            ele.links.map((link , index) => {
-                                                return(
-                                                    <li className='text-md w-[100px] text-secondary font-bold' key={index}> {link}</li>
-                                                )
-                                            })
-                                        }
-                                    </ul> 
-                                </motion.div>
-                                )
-                            })
-                        }
+
+    return (
+        <footer className='w-full bg-dark border-t border-white/5 pt-20 pb-10'>
+            <div className='container mx-auto px-4'>
+                <div className='flex flex-col lg:flex-row justify-between gap-16 mb-20'>
+                    {/* Brand */}
+                    <div className='lg:w-1/3 space-y-6'>
+                        <div className="flex items-center gap-3">
+                            <Image src="/assets/images/logo.svg" alt="logo" width={60} height={60} className='w-16' />
+                            <span className='text-3xl font-serif text-white'>Sluch</span>
+                        </div>
+                        <p className='text-white/60 leading-relaxed font-light'>
+                            Experience the art of dining where tradition meets innovation. <br />
+                            Crafting memories, one plate at a time.
+                        </p>
+                    </div>
+
+                    {/* Links */}
+                    <div className='lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-10'>
+                        {FOOTER_LINKS.map((section, idx) => (
+                            <div key={idx} className="space-y-6">
+                                <h4 className="text-xl font-serif text-primary">{section.title}</h4>
+                                <ul className="space-y-4">
+                                    {section.links.map((link, linkIdx) => (
+                                        <li key={linkIdx}>
+                                            <Link
+                                                href={link.href}
+                                                className="text-white/60 hover:text-white transition-colors duration-300 text-sm tracking-wide"
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </div>
-                <span className='text-secondary/50 text-center text-sm mt-5'>Copyright 2022. All Rights Reserved</span>
+
+                <div className="border-t border-white/5 pt-8 text-center">
+                    <p className="text-white/30 text-xs uppercase tracking-widest">
+                        &copy; {new Date().getFullYear()} Sluch Restaurant. All Rights Reserved.
+                    </p>
+                </div>
             </div>
-        </div>
-    </div>
-  )
+        </footer>
+    )
 }
 
 export default Footer

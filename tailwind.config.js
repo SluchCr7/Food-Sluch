@@ -21,18 +21,36 @@ module.exports = {
       "2xl": "1400px",
     },
     fontFamily: {
-      primary : "var(--font-jetBrainsMono)",
+      primary: ["var(--font-lato)", "sans-serif"],
+      serif: ["var(--font-playfair)", "serif"],
     },
     extend: {
       colors: {
-        primary: "#e4c590",
-        secondary: "#f5f5f5",
-        dark: "#000000",
-        light: "#fff",
+        primary: {
+          DEFAULT: "#D4AF37", // Metallic Gold
+          hover: "#C5A028",
+          foreground: "#1a1a1a"
+        },
+        secondary: {
+          DEFAULT: "#1A1A1A", // Off-black
+          foreground: "#FAFAFA"
+        },
         accent: {
-          DEFAULT: "#0e0d0b",
-          ColorT: "#0e0d0c",
-          hover: "#121111",
+          DEFAULT: "#2C3E50", // Deep Charcoal Blue
+          hover: "#34495E",
+          foreground: "#FFFFFF"
+        },
+        dark: "#050505", // Deepest black
+        light: "#FAFAFA",
+        // Premium palette additions
+        gold: {
+          100: "#F9F1D8",
+          200: "#F0DEAA",
+          300: "#E6CB7D",
+          400: "#DDB850",
+          500: "#D4AF37", // Base Gold
+          600: "#AA8C2C",
+          700: "#806921",
         }
       },
       keyframes: {
