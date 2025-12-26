@@ -21,6 +21,7 @@ const About = () => {
             img: "/assets/images/service-3.jpg",
         },
     ]
+    return (
     <div className='About relative w-full min-h-[90vh] py-20 bg-dark overflow-hidden' id='about'>
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
              <Image src="/assets/images/about-chef.png" alt="bg" fill className="object-cover" />
@@ -98,7 +99,8 @@ const About = () => {
         <div className='absolute right-0 bottom-0 opacity-10 pointer-events-none'>
             <Image src="/assets/images/shape-1.png" alt="bkg" width={500} height={500} />
         </div>
-    </div>
+        </div>
+    )
 }
 
 export default About
