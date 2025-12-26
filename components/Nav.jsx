@@ -9,21 +9,22 @@ const Nav = () => {
         { name: "Home", link: "/" },
         { name: "Menu", link: "/menu" },
         { name: "About", link: "/about" },
+        { name: "Gallery", link: "/gallery" },
         { name: "Contact", link: "/contact" },
     ]
-  return (
-    <nav className='flex flex-row items-center gap-8'>
-        {Links.map((link, index) => (
-            <Link
-                href={link.link}
-                key={index}
-                className={`relative font-medium text-sm text-white/80 hover:text-white transition-colors duration-300 ${pathname === link.link ? 'active' : ''}`}
-            >
-                {link.name}
-            </Link>
-        ))}
-    </nav>
-  )
+    return (
+        <nav className='flex flex-row items-center gap-8'>
+            {Links.map((link, index) => (
+                <Link
+                    href={link.link}
+                    key={index}
+                    className={`relative font-medium text-sm text-white/80 hover:text-white transition-colors duration-300 ${pathname === link.link ? 'active' : ''}`}
+                >
+                    {link.name}
+                </Link>
+            ))}
+        </nav>
+    )
 }
 
 export default Nav

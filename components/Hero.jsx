@@ -7,8 +7,8 @@ import Image from 'next/image'
 
 const Hero = () => {
   const images = [
+    '/assets/images/hero-new-1.png',
     '/assets/images/hero-slider-1.jpg',
-    '/assets/images/hero-slider-2.jpg',
     '/assets/images/hero-slider-3.jpg'
   ]
 
@@ -30,17 +30,18 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
+          transition={{ duration: 2, ease: "easeInOut" }}
           className="absolute inset-0 z-0"
         >
           <Image
             src={images[currentImage]}
             alt="Hero Background"
             fill
-            className='object-cover opacity-60'
+            className='object-cover opacity-70'
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/30" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
         </motion.div>
       </AnimatePresence>
 

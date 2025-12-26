@@ -3,10 +3,11 @@ import { motion } from 'framer-motion'
 import Fadein from '@/lib/Variants'
 const Intro = (props) => {
   return (
-    <div variants={Fadein("down" , 0.5)} initial="hidden" animate="visible" viewport={{once: false , amount: 0.5}} className='w-full flex flex-col items-center gap-2'>
-        <span className='introtxt text-base text-primary text-center uppercase'>{props.title}</span>
-        <h1 className='text-3xl lg:text-5xl font-bold text-center'>{props.text}</h1>
-        <p className='text-gray-500 text-lg w-[100%] lg:w-[50%] text-center'>{props.subtext}</p>
+    <div className='w-full flex flex-col items-center gap-4 mb-12'>
+      <span className='introtxt text-sm md:text-base text-primary tracking-[0.2em] uppercase font-semibold'>{props.title}</span>
+      <h1 className='text-4xl md:text-6xl font-serif font-bold text-center text-white capitalize leading-tight'>{props.text}</h1>
+      <div className="w-24 h-1 bg-primary rounded-full my-2"></div>
+      <p className='text-white/70 text-base md:text-lg w-[90%] md:w-[60%] lg:w-[50%] text-center font-light leading-relaxed'>{props.subtext}</p>
     </div>
   )
 }

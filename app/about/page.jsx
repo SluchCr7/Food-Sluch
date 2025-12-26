@@ -14,7 +14,7 @@ const AboutPage = () => {
             <section className="relative h-[50vh] flex items-center justify-center bg-accent overflow-hidden">
                 <div className="absolute inset-0 bg-black/50 z-10" />
                 <Image
-                    src="/assets/images/about-hero.jpg"
+                    src="/assets/images/hero-new-1.png"
                     alt="About Us"
                     fill
                     className="object-cover"
@@ -50,7 +50,7 @@ const AboutPage = () => {
                     >
                         <div className="relative h-[500px] w-full rounded-2xl overflow-hidden border border-white/10">
                             <Image
-                                src="/assets/images/about-interior.jpg"
+                                src="/assets/images/hero-slider-3.jpg"
                                 alt="Restaurant Interior"
                                 fill
                                 className="object-cover"
@@ -104,7 +104,7 @@ const AboutPage = () => {
                     <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 bg-dark/50 p-8 rounded-2xl border border-white/5">
                         <div className="w-full md:w-1/3 relative h-[300px] rounded-xl overflow-hidden">
                             <Image
-                                src="/assets/images/chef.jpg"
+                                src="/assets/images/about-chef.png"
                                 alt="Chef"
                                 fill
                                 className="object-cover"
@@ -114,15 +114,8 @@ const AboutPage = () => {
                             <h3 className="text-3xl font-serif text-white mb-2">Alessandro Rossi</h3>
                             <p className="text-primary mb-6">Execuitve Chef</p>
                             <p className="text-white/70 mb-6 italic">
-                                Cooking is an art, but baking is a science. At Sluch, we combine both to create magic on your plate. My philosophy is simple: respect the ingredients.
+                                "Cooking is an art, but baking is a science. At Sluch, we combine both to create magic on your plate. My philosophy is simple: respect the ingredients."
                             </p>
-                            <Image
-                                src="/assets/images/signature.png"
-                                alt="Signature"
-                                width={150}
-                                height={50}
-                                className="opacity-60"
-                            />
                         </div>
                     </div>
                 </div>

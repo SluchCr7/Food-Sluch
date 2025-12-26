@@ -17,7 +17,7 @@ export default function Home() {
           <div className="w-full md:w-1/2 relative">
             <div className="relative h-[600px] w-full rounded-sm overflow-hidden">
               <Image
-                src="/assets/images/about-interior.jpg"
+                src="/assets/images/hero-slider-3.jpg"
                 alt="Interior"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -26,7 +26,7 @@ export default function Home() {
             <div className="absolute -bottom-10 -left-10 w-2/3 h-1/2 bg-dark border border-white/10 p-2 hidden lg:block">
               <div className="relative w-full h-full overflow-hidden">
                 <Image
-                  src="/assets/images/chef.jpg"
+                  src="/assets/images/about-chef.png"
                   alt="Chef"
                   fill
                   className="object-cover"

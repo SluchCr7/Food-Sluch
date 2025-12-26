@@ -13,6 +13,7 @@ const MobileNav = () => {
         { name: "Home", link: "/" },
         { name: "Menu", link: "/menu" },
         { name: "About", link: "/about" },
+        { name: "Gallery", link: "/gallery" },
         { name: "Reservation", link: "/reservation" }, // Added Reservation here too
         { name: "Contact", link: "/contact" },
     ]
