@@ -121,6 +121,55 @@ const AboutPage = () => {
                 </div>
             </section>
 
+            {/* Team Section */}
+            <section className="py-24 bg-dark">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-16">
+                        <span className="text-primary font-serif italic text-2xl mb-2 block">The Team</span>
+                        <h2 className="text-4xl md:text-5xl font-serif text-white">Culinary Artists</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {[
+                            { name: "Alessandro Rossi", role: "Executive Chef", img: "/assets/images/about-chef.png" },
+                            { name: "Maria Gonzalez", role: "Head Pastry Chef", img: "/assets/images/chef-pastry.png" },
+                            { name: "Julian Ramirez", role: "Sous Chef", img: "/assets/images/chef-sous.png" }
+                        ].map((chef, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.2 }}
+                                className="group relative"
+                            >
+                                <div className="relative h-[500px] w-full overflow-hidden rounded-lg mb-6">
+                                    <Image
+                                        src={chef.img}
+                                        alt={chef.name}
+                                        fill
+                                        className="object-cover group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                                    <div className="absolute bottom-0 left-0 w-full p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                        <div className="flex justify-center gap-4 text-primary">
+                                            <span className="cursor-pointer hover:text-white">Twitter</span>
+                                            <span className="cursor-pointer hover:text-white">Instagram</span>
+                                            <span className="cursor-pointer hover:text-white">LinkedIn</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="text-center">
+                                    <h3 className="text-2xl font-serif text-white mb-1">{chef.name}</h3>
+                                    <p className="text-primary font-light uppercase tracking-widest text-sm">{chef.role}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <Footer />
         </div>
     )

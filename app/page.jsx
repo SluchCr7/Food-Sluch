@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Testimenation from "@/components/Testimenation";
 
 export default function Home() {
   return (
@@ -117,6 +118,29 @@ export default function Home() {
           <Link href="/menu" className="px-8 py-3 border border-white/20 text-white hover:bg-white hover:text-black transition-all rounded-full inline-block">
             View Full Menu
           </Link>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <Testimenation />
+
+      {/* Events / Private Dining Preview */}
+      <section className="relative py-24 flex items-center bg-dark overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image src="/assets/images/interior-bar.png" alt="Bar" fill className="object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-transparent" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <span className="text-primary font-serif italic text-2xl mb-2 block">Exclusive Events</span>
+            <h2 className="text-5xl font-serif text-white mb-6 leading-tight">Private Dining & <br /> Corporate Events</h2>
+            <p className="text-white/70 text-lg mb-8 leading-relaxed">
+              Host your next special occasion in our exclusive private dining rooms. From intimate gatherings to grand celebrations, our dedicated team ensures every detail is perfect.
+            </p>
+            <Link href="/contact" className="px-8 py-3 bg-white text-black font-bold uppercase tracking-widest text-sm hover:bg-primary transition-colors rounded-sm inline-block">
+              Inquire Now
+            </Link>
+          </div>
         </div>
       </section>
 
