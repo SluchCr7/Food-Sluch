@@ -3,6 +3,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Button from '@/components/ui/Button'
 
 const ContactPage = () => {
     return (
@@ -95,7 +96,6 @@ const ContactPage = () => {
                             ></textarea>
                             <Button
                                 type="button"
-                                variant="primary"
                                 className="w-full"
                             >
                                 Send Message
