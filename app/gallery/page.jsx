@@ -4,21 +4,22 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import SectionTitle from '@/components/ui/SectionTitle'
 
 const GalleryPage = () => {
     const images = [
-        { src: "/assets/images/hero-new-1.png", category: "Interior" },
-        { src: "/assets/images/special-dish-new.png", category: "Dish" },
-        { src: "/assets/images/about-chef.png", category: "Chef" },
-        { src: "/assets/images/chef-sous.png", category: "Chef" },
-        { src: "/assets/images/chef-pastry.png", category: "Chef" },
-        { src: "/assets/images/interior-bar.png", category: "Interior" },
-        { src: "/assets/images/menu-1.jpg", category: "Dish" },
-        { src: "/assets/images/menu-5.jpg", category: "Dish" },
-        { src: "/assets/images/menu-4.jpg", category: "Dish" },
-        { src: "/assets/images/hero-slider-3.jpg", category: "Interior" },
-        { src: "/assets/images/event-1.jpg", category: "Events" },
-        { src: "/assets/images/event-2.jpg", category: "Events" },
+        { src: "/assets/images/hero-new-1.png", category: "Interior", size: "large" },
+        { src: "/assets/images/special-dish-new.png", category: "Dish", size: "small" },
+        { src: "/assets/images/about-chef.png", category: "Chef", size: "tall" },
+        { src: "/assets/images/chef-sous.png", category: "Chef", size: "small" },
+        { src: "/assets/images/chef-pastry.png", category: "Chef", size: "small" },
+        { src: "/assets/images/interior-bar.png", category: "Interior", size: "wide" },
+        { src: "/assets/images/menu-1.jpg", category: "Dish", size: "tall" },
+        { src: "/assets/images/menu-5.jpg", category: "Dish", size: "small" },
+        { src: "/assets/images/menu-4.jpg", category: "Dish", size: "large" },
+        { src: "/assets/images/hero-slider-3.jpg", category: "Interior", size: "wide" },
+        { src: "/assets/images/event-1.jpg", category: "Events", size: "small" }, // Assuming this exists or using placeholders
+        { src: "/assets/images/menu-6.jpg", category: "Dish", size: "small" },
     ]
 
     const [filter, setFilter] = useState("All")
@@ -31,40 +32,46 @@ const GalleryPage = () => {
             <Header />
 
             {/* Hero */}
-            <section className="relative h-[40vh] flex items-center justify-center bg-accent overflow-hidden">
-                <div className="absolute inset-0 bg-black/60 z-10" />
-                <Image src="/assets/images/hero-slider-1.jpg" alt="Gallery Hero" fill className="object-cover" />
-                <div className="relative z-20 text-center">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-serif text-white mb-4"
+            <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <Image src="/assets/images/hero-slider-1.jpg" alt="Gallery Hero" fill className="object-cover opacity-60" priority />
+                    <div className="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/30 to-dark" />
+                </div>
+
+                <div className="relative z-10 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
                     >
-                        Our Gallery
-                    </motion.h1>
-                    <p className="text-lg md:text-xl text-primary font-light">
-                        A visual journey through our culinary world
-                    </p>
+                        <SectionTitle
+                            subtitle="Visual Journey"
+                            title="Our Gallery"
+                            description="Experience the atmosphere, culinary creations, and moments that define Sluch."
+                        />
+                    </motion.div>
                 </div>
             </section>
 
             <section className="py-20 container mx-auto px-4">
                 {/* Filter */}
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                <div className="flex flex-wrap justify-center gap-4 mb-16">
                     {categories.map((cat, idx) => (
                         <button
                             key={idx}
                             onClick={() => setFilter(cat)}
-                            className={`px-6 py-2 rounded-full border transition-all duration-300 ${filter === cat ? 'bg-primary border-primary text-black font-bold' : 'bg-transparent border-white/20 text-white hover:border-white'}`}
+                            className={`px-8 py-3 rounded-sm border transition-all duration-300 uppercase tracking-widest text-xs font-bold ${filter === cat
+                                ? 'bg-primary border-primary text-black'
+                                : 'bg-transparent border-white/10 text-white/60 hover:text-white hover:border-white/40'}`}
                         >
                             {cat}
                         </button>
                     ))}
                 </div>
 
-                {/* Grid */}
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <AnimatePresence>
+                {/* Masonry-ish Grid */}
+                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[300px]">
+                    <AnimatePresence mode='popLayout'>
                         {filteredImages.map((img, index) => (
                             <motion.div
                                 layout
@@ -72,12 +79,29 @@ const GalleryPage = () => {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
                                 transition={{ duration: 0.5 }}
-                                key={index}
-                                className="relative h-64 md:h-80 rounded-lg overflow-hidden group cursor-pointer"
+                                key={index} // Ideally use a unique ID
+                                className={`
+                                    relative rounded-sm overflow-hidden group cursor-pointer border border-white/5
+                                    ${img.size === 'large' ? 'md:col-span-2 md:row-span-2' : ''}
+                                    ${img.size === 'wide' ? 'md:col-span-2' : ''}
+                                    ${img.size === 'tall' ? 'md:row-span-2' : ''}
+                                `}
                             >
-                                <Image src={img.src} alt="Gallery Item" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <span className="text-primary tracking-widest uppercase text-sm font-bold border border-primary px-4 py-2 hover:bg-primary hover:text-black transition-colors">View</span>
+                                <Image
+                                    src={img.src}
+                                    alt="Gallery Item"
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+                                    <span className="text-primary tracking-widest uppercase text-xs font-bold mb-2">
+                                        {img.category}
+                                    </span>
+                                    <div className="w-8 h-[1px] bg-white/50 mb-4"></div>
+                                    <span className="text-white text-sm border border-white/30 px-6 py-2 hover:bg-white hover:text-black transition-colors">
+                                        View Full
+                                    </span>
                                 </div>
                             </motion.div>
                         ))}

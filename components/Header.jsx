@@ -5,6 +5,7 @@ import Nav from './Nav'
 import MobileNav from './MobileNav'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import Button from './ui/Button'
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -27,7 +28,8 @@ const Header = () => {
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className='relative w-16 h-16'>
+          <Link href="/" className='relative w-20 h-20 md:w-24 md:h-24'>
+            {/* Using a larger logo for impact */}
             <Image
               src="/assets/images/logo.svg"
               alt="Sluch Logo"
@@ -48,18 +50,9 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className='hidden xl:flex items-center gap-4'>
-            <Link
-              href="/reservation"
-              className={`
-                        text-xs uppercase tracking-widest font-bold px-6 py-3 rounded-sm transition-all duration-300 border
-                        ${scrolled
-                  ? 'bg-primary text-black border-primary hover:bg-white'
-                  : 'bg-transparent text-white border-white hover:bg-white hover:text-black'
-                }
-                    `}
-            >
+            <Button href="/reservation" variant="gold" size="sm" className="hidden md:inline-flex">
               Book a Table
-            </Link>
+            </Button>
           </div>
         </div>
       </motion.header>

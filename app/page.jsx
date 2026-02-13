@@ -5,142 +5,200 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Testimenation from "@/components/Testimenation";
+import SectionTitle from "@/components/ui/SectionTitle";
+import Button from "@/components/ui/Button";
+import MenuCard from "@/components/ui/MenuCard";
+import { ChefHat, Utensils, GlassWater, Star, ArrowRight } from "lucide-react";
+
+// Setup Swiper for menu if needed, or just a grid for simplicity in V1
+// I'll stick to a clean grid for Menu first to ensure stability, Swiper can be added if requested specifically for carousel.
 
 export default function Home() {
   return (
-    <div className="bg-dark min-h-screen">
+    <div className="bg-dark min-h-screen overflow-x-hidden">
       <Hero />
 
-      {/* About Preview Section */}
-      <section className="py-24 container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center gap-16">
-          <div className="w-full md:w-1/2 relative">
-            <div className="relative h-[600px] w-full rounded-sm overflow-hidden">
-              <Image
-                src="/assets/images/hero-slider-3.jpg"
-                alt="Interior"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div className="absolute -bottom-10 -left-10 w-2/3 h-1/2 bg-dark border border-white/10 p-2 hidden lg:block">
-              <div className="relative w-full h-full overflow-hidden">
-                <Image
-                  src="/assets/images/about-chef.png"
-                  alt="Chef"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
+      {/* Story Section */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Decorative Background Element */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
 
-          <div className="w-full md:w-1/2">
-            <span className="text-primary font-serif italic text-2xl mb-4 block">Since 1995</span>
-            <h2 className="text-4xl md:text-6xl font-serif text-white mb-8 leading-tight">
-              Where Every Meal <br /> Tells a Story
-            </h2>
-            <p className="text-white/70 text-lg mb-8 leading-relaxed font-light">
-              At Sluch, we believe that dining is more than just eating; it is an experience that engages all the senses. From the warm, ambient lighting to the meticulously plated dishes, every detail is curated to transport you to a world of culinary delight.
-            </p>
-            <div className="flex gap-8">
-              <Link href="/about" className="text-primary hover:text-white transition-colors border-b border-primary pb-1 inline-block uppercase tracking-widest text-sm">
-                Read Our Story
-              </Link>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+
+            {/* Image Collage */}
+            <div className="w-full lg:w-1/2 relative min-h-[500px]">
+              <div className="absolute top-0 left-0 w-3/4 h-3/4 z-10">
+                <div className="relative w-full h-full rounded-sm overflow-hidden shadow-2xl">
+                  <Image
+                    src="/assets/images/about-chef.png"
+                    alt="Chef preparing food"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </div>
+              <div className="absolute bottom-0 right-0 w-2/3 h-2/3 z-20 border-8 border-dark">
+                <div className="relative w-full h-full rounded-sm overflow-hidden shadow-2xl">
+                  <Image
+                    src="/assets/images/hero-slider-3.jpg"
+                    alt="Restaurant Interior"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </div>
+              {/* Decorative Box */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full border border-primary/20 -z-10 rounded-sm transform rotate-3" />
+            </div>
+
+            {/* Content */}
+            <div className="w-full lg:w-1/2">
+              <SectionTitle
+                subtitle="Our Story"
+                title="A Culinary Journey Since 1995"
+                align="left"
+                className="mb-8"
+              />
+              <p className="text-white/70 text-lg mb-6 leading-relaxed font-light">
+                At Sluch, we believe that dining is more than just eating; it is an experience that engages all the senses. From the warm, ambient lighting to the meticulously plated dishes, every detail is curated to transport you to a world of culinary delight.
+              </p>
+              <p className="text-white/70 text-lg mb-10 leading-relaxed font-light">
+                Our philosophy is rooted in tradition but driven by innovation. We source only the finest seasonal ingredients to create dishes that tell a story of flavor, texture, and passion.
+              </p>
+              <Button href="/about" variant="outline">
+                Read Full Story
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services / Highlights */}
-      <section className="py-24 bg-white/5">
+      {/* Highlights / Services */}
+      <section className="py-24 bg-dark-100/50 relative">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-primary font-serif italic text-xl mb-2 block">Why Choose Us</span>
-            <h2 className="text-4xl font-serif text-white">The Sluch Experience</h2>
-          </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Master Chefs", icon: "👨‍🍳", desc: "Award-winning culinary experts crafting perfection." },
-              { title: "Fresh Ingredients", icon: "🌿", desc: "Farm-to-table produce ensuring the highest quality." },
-              { title: "Exquisite Ambience", icon: "✨", desc: "A dining atmosphere designed for luxury and comfort." }
+              {
+                icon: <ChefHat className="w-10 h-10 text-primary" />,
+                title: "Master Chefs",
+                desc: "Award-winning culinary experts crafting perfection in every dish."
+              },
+              {
+                icon: <Utensils className="w-10 h-10 text-primary" />,
+                title: "Fresh Ingredients",
+                desc: "Farm-to-table produce ensuring the highest quality and taste."
+              },
+              {
+                icon: <GlassWater className="w-10 h-10 text-primary" />,
+                title: "Exquisite Ambience",
+                desc: "A dining atmosphere designed for luxury, comfort, and memorable moments."
+              }
             ].map((item, idx) => (
-              <div key={idx} className="bg-dark/50 p-10 border border-white/5 hover:border-primary/50 transition-all duration-300 group text-center">
-                <span className="text-4xl mb-6 block grayscale group-hover:grayscale-0 transition-all">{item.icon}</span>
-                <h3 className="text-2xl font-serif text-white mb-4">{item.title}</h3>
-                <p className="text-white/50">{item.desc}</p>
-              </div>
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.2, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="bg-white/5 backdrop-blur-sm p-10 border border-white/5 hover:border-primary/30 transition-all duration-300 group text-center rounded-sm hover:-translate-y-2"
+              >
+                <div className="mb-6 inline-flex p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-display text-white mb-4">{item.title}</h3>
+                <p className="text-white/50 leading-relaxed font-light">{item.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Menu Preview */}
-      <section className="py-24 container mx-auto px-4">
-        <div className="flex justify-between items-end mb-16">
-          <div>
-            <span className="text-primary font-serif italic text-xl mb-2 block">Our Favorites</span>
-            <h2 className="text-4xl font-serif text-white">Signature Dishes</h2>
-          </div>
-          <Link href="/menu" className="hidden md:block px-8 py-3 border border-white/20 text-white hover:bg-white hover:text-black transition-all rounded-full">
-            View Full Menu
-          </Link>
-        </div>
+      {/* Featured Menu */}
+      <section className="py-24 container mx-auto px-4 text-center">
+        <SectionTitle
+          subtitle="Our Favorites"
+          title="Signature Dishes"
+          description="A curated selection of our most beloved creations, featuring seasonal ingredients and innovative techniques."
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {[
-            { title: "Tokusen Wagyu", price: "$85", img: "/assets/images/menu-4.jpg" },
-            { title: "Truffle Pasta", price: "$42", img: "/assets/images/menu-5.jpg" },
-            { title: "Royal Seabass", price: "$38", img: "/assets/images/menu-6.jpg" }
+            { title: "Tokusen Wagyu", price: "$85", img: "/assets/images/menu-4.jpg", description: "A5 Japanese Wagyu with truffle infused soy reduction." },
+            { title: "Truffle Pasta", price: "$42", img: "/assets/images/menu-5.jpg", description: "Hand-made tagliatelle, black truffle shavings, parmesan cream." },
+            { title: "Royal Seabass", price: "$38", img: "/assets/images/menu-6.jpg", description: "Pan-seared seabass, citrus buerre blanc, asparagus." }
           ].map((dish, i) => (
-            <div key={i} className="group relative">
-              <div className="relative h-[400px] w-full overflow-hidden rounded-lg mb-4">
-                <Image
-                  src={dish.img}
-                  alt={dish.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60" />
-                <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                  <div>
-                    <h3 className="text-2xl font-serif text-white mb-1 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">{dish.title}</h3>
-                    <span className="text-primary font-mono transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">{dish.price}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <MenuCard key={i} item={dish} />
           ))}
         </div>
-        <div className="mt-8 text-center md:hidden">
-          <Link href="/menu" className="px-8 py-3 border border-white/20 text-white hover:bg-white hover:text-black transition-all rounded-full inline-block">
-            View Full Menu
-          </Link>
+
+        <Button href="/menu" variant="primary">
+          View Full Menu
+        </Button>
+      </section>
+
+      {/* Testimonials (Simplied for V1, can be upgraded to Swiper) */}
+      <section className="py-24 bg-accent/20 border-y border-white/5 relative">
+        <div className="container mx-auto px-4 text-center max-w-4xl">
+          <div className="mb-10 text-primary text-6xl opacity-30 font-serif">“</div>
+          <h3 className="text-3xl md:text-5xl font-display text-white mb-8 leading-tight">
+            This place is absolutely amazing. The food, the service, the atmosphere - everything was perfect. Highly recommended!
+          </h3>
+          <div className="flex flex-col items-center">
+            <div className="flex gap-1 text-primary mb-4">
+              {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="w-4 h-4 fill-primary" />)}
+            </div>
+            <span className="text-white font-serif text-lg">Sarah Johnson</span>
+            <span className="text-white/40 text-sm">Food Critic</span>
+          </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <Testimenation />
-
-      {/* Events / Private Dining Preview */}
-      <section className="relative py-24 flex items-center bg-dark overflow-hidden">
+      {/* Private Dining / Events */}
+      <section className="relative py-32 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/assets/images/interior-bar.png" alt="Bar" fill className="object-cover opacity-30" />
+          <Image
+            src="/assets/images/interior-bar.png"
+            alt="Private Dining"
+            fill
+            className="object-cover opacity-40 hover:scale-105 transition-transform duration-[20s]"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-transparent" />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl">
-            <span className="text-primary font-serif italic text-2xl mb-2 block">Exclusive Events</span>
-            <h2 className="text-5xl font-serif text-white mb-6 leading-tight">Private Dining & <br /> Corporate Events</h2>
-            <p className="text-white/70 text-lg mb-8 leading-relaxed">
+
+        <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="max-w-xl">
+            <SectionTitle
+              subtitle="Exclusive Events"
+              title="Private Dining & Corporate Events"
+              align="left"
+              className="mb-8"
+            />
+            <p className="text-white/80 text-lg mb-8 leading-relaxed font-light">
               Host your next special occasion in our exclusive private dining rooms. From intimate gatherings to grand celebrations, our dedicated team ensures every detail is perfect.
             </p>
-            <Link href="/contact" className="px-8 py-3 bg-white text-black font-bold uppercase tracking-widest text-sm hover:bg-primary transition-colors rounded-sm inline-block">
+            <Button href="/contact" variant="ghost" className="border-white/20 text-white hover:bg-white hover:text-dark">
               Inquire Now
-            </Link>
+            </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-24 container mx-auto px-4 text-center">
+        <div className="max-w-2xl mx-auto bg-white/5 border border-white/10 p-12 rounded-sm backdrop-blur-md">
+          <h3 className="text-2xl font-display text-white mb-4">Join Our Newsletter</h3>
+          <p className="text-white/60 mb-8">Subscribe to receive updates on new menu items and special events.</p>
+          <form className="flex flex-col sm:flex-row gap-4">
+            <input
+              type="email"
+              placeholder="Your Email Address"
+              className="flex-1 bg-transparent border border-white/20 px-6 py-4 text-white focus:border-primary focus:outline-none placeholder:text-white/30"
+            />
+            <Button type="submit" variant="primary" className="whitespace-nowrap">
+              Subscribe
+            </Button>
+          </form>
         </div>
       </section>
 

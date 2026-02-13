@@ -16,12 +16,9 @@ export default function NotFound() {
             <p className="text-white/60 mb-8 max-w-md">
                 The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
             </p>
-            <Link
-                href="/"
-                className="px-8 py-3 bg-primary text-black font-bold uppercase tracking-widest rounded-sm hover:bg-white transition-colors duration-300"
-            >
+            <Button href="/" variant="primary">
                 Back to Home
-            </Link>
+            </Button>
         </div>
     )
 }

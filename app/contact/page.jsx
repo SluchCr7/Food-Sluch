@@ -29,9 +29,9 @@ const ContactPage = () => {
                     </p>
                 </div>
             </section>
- 
+
             <section className="py-20 container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 mb-24">
 
                     {/* Contact Info */}
                     <motion.div
@@ -47,22 +47,22 @@ const ContactPage = () => {
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                            <div className="bg-white/5 p-6 rounded-xl border border-white/5 hover:border-primary/50 transition-colors group">
+                            <div className="bg-white/5 p-6 rounded-sm border border-white/5 hover:border-primary/50 transition-colors group">
                                 <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform duration-300">📍</span>
                                 <h4 className="text-xl font-serif text-white mb-2">Location</h4>
                                 <p className="text-white/50 text-sm">123 Culinary Avenue<br />Food City, FC 90210</p>
                             </div>
-                            <div className="bg-white/5 p-6 rounded-xl border border-white/5 hover:border-primary/50 transition-colors group">
+                            <div className="bg-white/5 p-6 rounded-sm border border-white/5 hover:border-primary/50 transition-colors group">
                                 <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform duration-300">📞</span>
                                 <h4 className="text-xl font-serif text-white mb-2">Phone</h4>
                                 <p className="text-white/50 text-sm">Booking: +1 (555) 123-4567<br />Office: +1 (555) 987-6543</p>
                             </div>
-                            <div className="bg-white/5 p-6 rounded-xl border border-white/5 hover:border-primary/50 transition-colors group">
+                            <div className="bg-white/5 p-6 rounded-sm border border-white/5 hover:border-primary/50 transition-colors group">
                                 <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform duration-300">✉️</span>
                                 <h4 className="text-xl font-serif text-white mb-2">Email</h4>
                                 <p className="text-white/50 text-sm">info@sluchrestaurant.com<br />events@sluchrestaurant.com</p>
                             </div>
-                            <div className="bg-white/5 p-6 rounded-xl border border-white/5 hover:border-primary/50 transition-colors group">
+                            <div className="bg-white/5 p-6 rounded-sm border border-white/5 hover:border-primary/50 transition-colors group">
                                 <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform duration-300">⏰</span>
                                 <h4 className="text-xl font-serif text-white mb-2">Hours</h4>
                                 <p className="text-white/50 text-sm">Daily: 11:00 AM - 11:00 PM<br />Happy Hour: 4:00 PM - 7:00 PM</p>
@@ -74,33 +74,48 @@ const ContactPage = () => {
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        className="bg-accent/30 p-8 rounded-2xl border border-white/10"
+                        className="bg-accent/30 p-8 rounded-sm border border-white/10"
                     >
                         <h3 className="text-2xl font-serif text-white mb-6">Send us a Message</h3>
                         <form className="space-y-6">
                             <input
                                 type="text"
                                 placeholder="Your Name"
-                                className="w-full bg-dark/50 border border-white/10 rounded-lg p-4 text-white focus:outline-none focus:border-primary transition-colors"
+                                className="w-full bg-dark/50 border border-white/10 rounded-sm p-4 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-white/30"
                             />
                             <input
                                 type="email"
                                 placeholder="Your Email"
-                                className="w-full bg-dark/50 border border-white/10 rounded-lg p-4 text-white focus:outline-none focus:border-primary transition-colors"
+                                className="w-full bg-dark/50 border border-white/10 rounded-sm p-4 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-white/30"
                             />
                             <textarea
                                 rows="4"
                                 placeholder="Your Message"
-                                className="w-full bg-dark/50 border border-white/10 rounded-lg p-4 text-white focus:outline-none focus:border-primary transition-colors resize-none"
+                                className="w-full bg-dark/50 border border-white/10 rounded-sm p-4 text-white focus:outline-none focus:border-primary transition-colors resize-none placeholder:text-white/30"
                             ></textarea>
-                            <button
+                            <Button
                                 type="button"
-                                className="w-full bg-white text-dark font-bold uppercase tracking-widest py-4 rounded-lg hover:bg-primary hover:text-white transition-all duration-300"
+                                variant="primary"
+                                className="w-full"
                             >
                                 Send Message
-                            </button>
+                            </Button>
                         </form>
                     </motion.div>
+                </div>
+
+                {/* Map Section */}
+                <div className="w-full h-[400px] border border-white/10 rounded-sm overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15282225.79979146!2d73.7250245393691!3d20.750301298393563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1587818542745!5m2!1sen!2sin"
+                        width="100%"
+                        height="100%"
+                        frameBorder="0"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        aria-hidden="false"
+                        tabIndex="0"
+                    ></iframe>
                 </div>
             </section>
 

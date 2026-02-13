@@ -4,64 +4,63 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import SectionTitle from '@/components/ui/SectionTitle'
+import { CheckCircle2 } from 'lucide-react'
 
 const AboutPage = () => {
     return (
-        <div className="bg-dark min-h-screen text-white/90">
+        <div className="bg-dark min-h-screen text-white/90 overflow-x-hidden">
             <Header />
 
-            {/* Hero Section */}
-            <section className="relative h-[50vh] flex items-center justify-center bg-accent overflow-hidden">
-                <div className="absolute inset-0 bg-black/50 z-10" />
-                <Image
-                    src="/assets/images/hero-new-1.png"
-                    alt="About Us"
-                    fill
-                    className="object-cover"
-                />
-                <div className="relative z-20 text-center px-4">
-                    <motion.span
-                        initial={{ opacity: 0, y: 10 }}
+            {/* Parallax Hero */}
+            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/assets/images/hero-new-1.png"
+                        alt="About Us"
+                        fill
+                        className="object-cover opacity-60"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
+                </div>
+
+                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-primary font-serif italic text-2xl mb-2 block"
+                        transition={{ duration: 0.8 }}
                     >
-                        Since 1995
-                    </motion.span>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="text-5xl md:text-7xl font-serif text-white mb-6"
-                    >
-                        Our Story
-                    </motion.h1>
+                        <SectionTitle
+                            subtitle="Since 1995"
+                            title="A Legacy of Flavor"
+                            description="From humble beginnings to a culinary landmark, our journey is defined by passion, innovation, and a commitment to excellence."
+                        />
+                    </motion.div>
                 </div>
             </section>
 
-            {/* Our Story Content */}
+            {/* Story & Philosophy */}
             <section className="py-24 container mx-auto px-4">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
+                <div className="flex flex-col lg:flex-row items-center gap-20">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:w-1/2 relative"
+                        transition={{ duration: 0.8 }}
+                        className="lg:w-1/2 relative group"
                     >
-                        <div className="relative h-[500px] w-full rounded-2xl overflow-hidden border border-white/10">
+                        <div className="absolute inset-0 bg-primary/20 transform rotate-3 rounded-sm z-0 transition-transform group-hover:rotate-6 duration-500"></div>
+                        <div className="relative h-[600px] w-full rounded-sm overflow-hidden z-10 shadow-2xl">
                             <Image
                                 src="/assets/images/hero-slider-3.jpg"
                                 alt="Restaurant Interior"
                                 fill
-                                className="object-cover"
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                         </div>
-                        {/* Floating Badge */}
-                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-dark border border-primary/30 rounded-full flex items-center justify-center p-4 shadow-2xl z-10 hidden md:flex">
-                            <div className="text-center">
-                                <span className="block text-4xl font-serif text-primary">25+</span>
-                                <span className="text-sm text-white/60 uppercase tracking-widest">Years of<br />Excelence</span>
-                            </div>
+                        <div className="absolute -bottom-12 -right-12 z-20 hidden md:block">
+                            <Image src="/assets/images/about-chef.png" alt="Chef Decor" width={200} height={200} className="rounded-full border-4 border-dark shadow-xl" />
                         </div>
                     </motion.div>
 
@@ -69,100 +68,111 @@ const AboutPage = () => {
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
                         className="lg:w-1/2"
                     >
-                        <h2 className="text-4xl md:text-5xl font-serif text-primary mb-8">
-                            A Tradition of <br /> <span className="text-white">Culinary Excellence</span>
+                        <h2 className="text-4xl lg:text-5xl font-display text-white mb-8 leading-tight">
+                            More Than Just <br /> <span className="text-primary italic">Fine Dining</span>
                         </h2>
-                        <p className="text-lg text-white/70 mb-6 leading-relaxed">
-                            Founded in the heart of the city, Sluch Restaurant began with a simple mission: to serve authentic flavors with a modern twist. Over the decades, we have evolved into a sanctuary for food lovers, where every dish tells a story of heritage and passion.
-                        </p>
-                        <p className="text-lg text-white/70 mb-8 leading-relaxed">
-                            Our chefs travel the world to source the finest ingredients, ensuring that every plate we serve is a masterpiece of taste and texture. We believe that dining is not just about eating—it is an experience to be cherished.
-                        </p>
 
-                        <div className="grid grid-cols-2 gap-8 mt-12">
-                            <div>
-                                <h4 className="text-xl font-serif text-white mb-2">Master Chefs</h4>
-                                <p className="text-sm text-white/50">Award-winning talent leading our kitchen with creativity and precision.</p>
-                            </div>
-                            <div>
-                                <h4 className="text-xl font-serif text-white mb-2">Fresh Ingredients</h4>
-                                <p className="text-sm text-white/50">Locally sourced, organic produce and premium meats delivered daily.</p>
-                            </div>
+                        <div className="space-y-6 text-white/70 text-lg font-light leading-relaxed">
+                            <p>
+                                Sluch was born from a desire to create a sanctuary where time slows down and the senses are awakened. What started as a small family kitchen has evolved into a destination for gastronomes who seek authenticity and innovation in every bite.
+                            </p>
+                            <p>
+                                We believe that food tells a story. Our menu is a narrative of seasons, landscapes, and traditions, reinterpreted with modern techniques. We honor the farmers, fishermen, and artisans who provide us with the finest ingredients, allowing their quality to shine on the plate.
+                            </p>
+                        </div>
+
+                        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {["Sustainable Sourcing", "World-Class Service", "Creative Mixology", "Authentic Recipes"].map((item, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                    <CheckCircle2 className="text-primary w-5 h-5" />
+                                    <span className="text-white/90 font-display">{item}</span>
+                                </div>
+                            ))}
                         </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Chef Section */}
-            <section className="py-24 bg-white/5">
-                <div className="container mx-auto px-4 text-center">
-                    <span className="text-primary font-serif italic text-2xl mb-2 block">The Mastermind</span>
-                    <h2 className="text-4xl md:text-5xl font-serif text-white mb-16">Meet Our Executive Chef</h2>
-
-                    <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 bg-dark/50 p-8 rounded-2xl border border-white/5">
-                        <div className="w-full md:w-1/3 relative h-[300px] rounded-xl overflow-hidden">
-                            <Image
-                                src="/assets/images/about-chef.png"
-                                alt="Chef"
-                                fill
-                                className="object-cover"
-                            />
+            {/* Chef Spotlight */}
+            <section className="py-24 bg-white/5 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform translate-x-20"></div>
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="flex flex-col md:flex-row items-center gap-12 bg-dark/80 backdrop-blur-md p-8 md:p-12 border border-white/5 rounded-sm">
+                        <div className="w-full md:w-1/3 relative">
+                            <div className="aspect-[3/4] rounded-sm overflow-hidden relative">
+                                <Image
+                                    src="/assets/images/about-chef.png"
+                                    alt="Executive Chef"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
                         </div>
-                        <div className="w-full md:w-2/3 text-left">
-                            <h3 className="text-3xl font-serif text-white mb-2">Alessandro Rossi</h3>
-                            <p className="text-primary mb-6">Execuitve Chef</p>
-                            <p className="text-white/70 mb-6 italic">
-                                Cooking is an art, but baking is a science. At Sluch, we combine both to create magic on your plate. My philosophy is simple: respect the ingredients.
+                        <div className="w-full md:w-2/3">
+                            <SectionTitle
+                                subtitle="The Visionary"
+                                title="Alessandro Rossi"
+                                align="left"
+                                className="mb-6"
+                            />
+                            <h4 className="text-primary text-xl font-display mb-6 uppercase tracking-widest">Executive Chef</h4>
+                            <p className="text-white/70 text-lg leading-relaxed italic mb-8 border-l-4 border-primary pl-6">
+                                &quot;To cook is to create a memory. My goal is not just to feed the body, but to touch the soul. Every ingredient has a voice, and it is my job to let it sing.&quot;
                             </p>
+                            <div className="flex gap-4">
+                                <Image src="/assets/images/signature.png" alt="Signature" width={150} height={60} className="filter invert opacity-60" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Team Section */}
+            {/* Team Grid */}
             <section className="py-24 bg-dark">
                 <div className="container mx-auto px-4">
-                    <div className="text-center mb-16">
-                        <span className="text-primary font-serif italic text-2xl mb-2 block">The Team</span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-white">Culinary Artists</h2>
-                    </div>
+                    <SectionTitle
+                        subtitle="Our Family"
+                        title="Meet the Culinary Artists"
+                        description="The talented individuals who bring passion and expertise to every service."
+                    />
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
                             { name: "Alessandro Rossi", role: "Executive Chef", img: "/assets/images/about-chef.png" },
                             { name: "Maria Gonzalez", role: "Head Pastry Chef", img: "/assets/images/chef-pastry.png" },
-                            { name: "Julian Ramirez", role: "Sous Chef", img: "/assets/images/chef-sous.png" }
-                        ].map((chef, idx) => (
+                            { name: "Julian Ramirez", role: "Sous Chef", img: "/assets/images/chef-sous.png" },
+                            { name: "Sarah Connor", role: "Sommelier", img: "/assets/images/hero-new-1.png" } // Placeholder image
+                        ].map((member, idx) => (
                             <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: idx * 0.1, duration: 0.5 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: idx * 0.2 }}
-                                className="group relative"
+                                className="group relative overflow-hidden"
                             >
-                                <div className="relative h-[500px] w-full overflow-hidden rounded-lg mb-6">
+                                <div className="relative h-[400px] w-full rounded-sm overflow-hidden mb-4">
                                     <Image
-                                        src={chef.img}
-                                        alt={chef.name}
+                                        src={member.img}
+                                        alt={member.name}
                                         fill
-                                        className="object-cover group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0"
+                                        className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                                    <div className="absolute bottom-0 left-0 w-full p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                                        <div className="flex justify-center gap-4 text-primary">
-                                            <span className="cursor-pointer hover:text-white">Twitter</span>
-                                            <span className="cursor-pointer hover:text-white">Instagram</span>
-                                            <span className="cursor-pointer hover:text-white">LinkedIn</span>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                                        <div className="flex gap-4 text-white">
+                                            {/* Social Icons Placeholder */}
+                                            <span className="hover:text-primary transition-colors cursor-pointer">IG</span>
+                                            <span className="hover:text-primary transition-colors cursor-pointer">TW</span>
+                                            <span className="hover:text-primary transition-colors cursor-pointer">LI</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="text-center">
-                                    <h3 className="text-2xl font-serif text-white mb-1">{chef.name}</h3>
-                                    <p className="text-primary font-light uppercase tracking-widest text-sm">{chef.role}</p>
+                                    <h3 className="text-xl font-display text-white mb-1 group-hover:text-primary transition-colors">{member.name}</h3>
+                                    <p className="text-white/40 text-xs uppercase tracking-widest">{member.role}</p>
                                 </div>
                             </motion.div>
                         ))}
