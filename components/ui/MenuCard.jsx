@@ -5,37 +5,50 @@ import { motion } from 'framer-motion';
 const MenuCard = ({ item }) => {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="group relative bg-dark-200/50 border border-white/5 overflow-hidden rounded-sm hover:border-primary/30 transition-all duration-500"
+            className="group relative bg-white/[0.02] luxury-border overflow-hidden transition-all duration-700 hover:bg-white/[0.04]"
         >
-            <div className="relative h-64 w-full overflow-hidden">
+            <div className="relative h-80 w-full overflow-hidden">
                 <Image
                     src={item.img}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
-
-                <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-sm border border-white/10">
-                    <span className="text-primary font-display font-medium">{item.price}</span>
+                
+                {/* Visual Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent opacity-80" />
+                
+                {/* Price Tag - Floating Gold */}
+                <div className="absolute top-6 right-6 glass-dark px-4 py-2 luxury-border">
+                    <span className="text-primary font-serif italic text-lg">{item.price}</span>
                 </div>
+
+                {/* Corner Accents */}
+                <div className="absolute bottom-0 left-0 w-8 h-px bg-primary translate-x-4 opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                <div className="absolute bottom-0 left-0 w-px h-8 bg-primary translate-y--4 opacity-0 group-hover:opacity-100 transition-all duration-700" />
             </div>
 
-            <div className="p-6 relative">
-                <h3 className="text-xl font-display text-white mb-2 group-hover:text-primary transition-colors duration-300">
+            <div className="p-8 relative">
+                <div className="flex items-center gap-4 mb-4">
+                     <span className="text-[10px] uppercase tracking-[0.4em] text-white/30">Signature</span>
+                     <div className="h-px flex-grow bg-white/5" />
+                </div>
+
+                <h3 className="text-2xl font-display text-white mb-3 group-hover:text-primary transition-colors duration-500">
                     {item.title}
                 </h3>
-                <p className="text-white/60 text-sm font-light leading-relaxed mb-4 line-clamp-2">
-                    {item.description || "A delicate combination of freshest ingredients prepared with passion."}
+                
+                <p className="text-white/40 text-sm font-light leading-relaxed mb-8 italic">
+                    {item.description}
                 </p>
 
-                <div className="flex items-center justify-between">
-                    <span className="text-xs text-white/40 uppercase tracking-widest">Signature Dish</span>
-                    <div className="w-8 h-[1px] bg-primary/50 group-hover:w-16 transition-all duration-300"></div>
+                <div className="flex items-center justify-between group/btn cursor-pointer">
+                    <span className="text-[10px] uppercase tracking-[0.5em] text-primary font-bold group-hover/btn:text-white transition-colors duration-500">View Details</span>
+                    <div className="w-12 h-px bg-primary/30 group-hover:w-20 group-hover:bg-white transition-all duration-700" />
                 </div>
             </div>
         </motion.div>

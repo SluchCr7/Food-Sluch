@@ -2,33 +2,45 @@
 import React from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 const Nav = () => {
     const pathname = usePathname()
     const Links = [
         { name: "Home", link: "/" },
         { name: "Menu", link: "/menu" },
-        { name: "Our Story", link: "/about" }, // Changed "About" to "Our Story" for premium feel
+        { name: "Ordering", link: "/ordering" },
+        { name: "Private Events", link: "/events" },
+        { name: "Our Story", link: "/about" },
         { name: "Gallery", link: "/gallery" },
+        { name: "Journal", link: "/offers" },
         { name: "Contact", link: "/contact" },
     ]
     return (
-        <nav className='flex flex-row items-center gap-8'>
+        <nav className='flex flex-row items-center gap-10'>
             {Links.map((link, index) => (
                 <Link
                     href={link.link}
                     key={index}
                     className={`
-                        relative font-medium text-xs uppercase tracking-widest text-white/80 hover:text-white transition-colors duration-300
-                        after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-0 after:h-[1px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full
-                        ${pathname === link.link ? 'text-white after:w-full' : ''}
+                        relative font-medium text-[10px] uppercase tracking-[0.2em] text-white/70 hover:text-primary transition-all duration-500
+                        ${pathname === link.link ? 'text-primary' : ''}
                     `}
                 >
-                    {link.name}
+                    <span className="relative">
+                        {link.name}
+                        {pathname === link.link && (
+                            <motion.div
+                                layoutId="nav-underline"
+                                className="absolute -bottom-2 left-0 right-0 h-[1px] bg-primary"
+                                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                            />
+                        )}
+                    </span>
                 </Link>
             ))}
         </nav>
     )
 }
 
-export default Nav
+export default Nav

@@ -5,7 +5,7 @@ import { CiMenuFries } from "react-icons/ci";
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import Button from './ui/Button'; // Import Button
+import Button from './ui/Button';
 
 const MobileNav = () => {
     const pathname = usePathname();
@@ -13,9 +13,12 @@ const MobileNav = () => {
     const Links = [
         { name: "Home", link: "/" },
         { name: "Menu", link: "/menu" },
-        { name: "About", link: "/about" },
+        { name: "Ordering", link: "/ordering" },
+        { name: "Private Events", link: "/events" },
+        { name: "Reviews", link: "/reviews" },
+        { name: "Our Story", link: "/about" },
         { name: "Gallery", link: "/gallery" },
-        { name: "Reservation", link: "/reservation" },
+        { name: "Journal", link: "/offers" },
         { name: "Contact", link: "/contact" },
     ]
 
@@ -67,4 +70,4 @@ const MobileNav = () => {
     )
 }
 
-export default MobileNav
+export default MobileNav

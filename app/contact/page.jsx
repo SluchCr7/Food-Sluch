@@ -1,121 +1,141 @@
 'use client'
 import React from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Button from '@/components/ui/Button'
+import { MapPin, Phone, Mail, Clock, MessageSquare, Send } from 'lucide-react'
 
 const ContactPage = () => {
     return (
-        <div className="bg-dark min-h-screen text-white/90">
+        <div className="bg-dark min-h-screen text-white selection:bg-primary/30">
             <Header />
 
-            {/* Hero */}
-            <section className="relative h-[40vh] flex items-center justify-center bg-accent overflow-hidden">
-                <div className="absolute inset-0 bg-black/60 z-10" />
-                {/* Gradients */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
-
-                <div className="relative z-20 text-center">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
+            {/* --- Hero --- */}
+            <section className="relative h-[60vh] flex items-center pt-24 overflow-hidden">
+                <Image
+                    src="/assets/images/interior-luxury.png"
+                    alt="Contact"
+                    fill
+                    className="object-cover opacity-30"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-dark via-dark/60 to-dark" />
+                
+                <div className="container mx-auto px-6 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-serif text-white mb-4"
+                        transition={{ duration: 1 }}
                     >
-                        Get in Touch
-                    </motion.h1>
-                    <p className="text-lg md:text-xl text-primary font-light">
-                        We had love to hear from you
-                    </p>
+                        <span className="text-primary font-serif italic text-xl tracking-[0.4em] uppercase mb-4 block">Concierge Service</span>
+                        <h1 className="text-6xl md:text-9xl font-display text-white mb-6">
+                            Contact <br /> <span className="text-primary italic">Sluch</span>
+                        </h1>
+                        <div className="w-32 h-px bg-primary" />
+                    </motion.div>
                 </div>
             </section>
 
-            <section className="py-20 container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 mb-24">
-
-                    {/* Contact Info */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="space-y-12"
-                    >
-                        <div>
-                            <h3 className="text-3xl font-serif text-white mb-6 heading-decoration">Contact Information</h3>
-                            <p className="text-white/60 mb-8 leading-relaxed">
-                                Have a question about our menu, private events, or just want to say hello? Drop us a message or visit us.
-                            </p>
+            {/* --- Info & Form --- */}
+            <section className="py-32 container mx-auto px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
+                    
+                    {/* Info */}
+                    <div className="lg:col-span-5 space-y-16">
+                        <div className="space-y-8">
+                             <div className="flex gap-8 items-start group">
+                                <MapPin className="text-primary w-6 h-6 mt-1 shrink-0 group-hover:scale-110 transition-transform" />
+                                <div>
+                                    <h4 className="text-[10px] uppercase tracking-[0.4em] text-white/30 mb-2">Location</h4>
+                                    <p className="text-xl font-display text-white">123 Culinary Boulevard, Metropolis</p>
+                                </div>
+                             </div>
+                             <div className="flex gap-8 items-start group">
+                                <Phone className="text-primary w-6 h-6 mt-1 shrink-0 group-hover:scale-110 transition-transform" />
+                                <div>
+                                    <h4 className="text-[10px] uppercase tracking-[0.4em] text-white/30 mb-2">Reservations</h4>
+                                    <p className="text-xl font-display text-white">+1 (555) 123-4567</p>
+                                </div>
+                             </div>
+                             <div className="flex gap-8 items-start group">
+                                <Mail className="text-primary w-6 h-6 mt-1 shrink-0 group-hover:scale-110 transition-transform" />
+                                <div>
+                                    <h4 className="text-[10px] uppercase tracking-[0.4em] text-white/30 mb-2">Inquiries</h4>
+                                    <p className="text-xl font-display text-white">concierge@sluch.com</p>
+                                </div>
+                             </div>
+                             <div className="flex gap-8 items-start group">
+                                <Clock className="text-primary w-6 h-6 mt-1 shrink-0 group-hover:scale-110 transition-transform" />
+                                <div>
+                                    <h4 className="text-[10px] uppercase tracking-[0.4em] text-white/30 mb-2">Service Hours</h4>
+                                    <p className="text-xl font-display text-white">Daily: 12:00 PM — 11:00 PM</p>
+                                </div>
+                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                            <div className="bg-white/5 p-6 rounded-sm border border-white/5 hover:border-primary/50 transition-colors group">
-                                <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform duration-300">📍</span>
-                                <h4 className="text-xl font-serif text-white mb-2">Location</h4>
-                                <p className="text-white/50 text-sm">123 Culinary Avenue<br />Food City, FC 90210</p>
-                            </div>
-                            <div className="bg-white/5 p-6 rounded-sm border border-white/5 hover:border-primary/50 transition-colors group">
-                                <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform duration-300">📞</span>
-                                <h4 className="text-xl font-serif text-white mb-2">Phone</h4>
-                                <p className="text-white/50 text-sm">Booking: +1 (555) 123-4567<br />Office: +1 (555) 987-6543</p>
-                            </div>
-                            <div className="bg-white/5 p-6 rounded-sm border border-white/5 hover:border-primary/50 transition-colors group">
-                                <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform duration-300">✉️</span>
-                                <h4 className="text-xl font-serif text-white mb-2">Email</h4>
-                                <p className="text-white/50 text-sm">info@sluchrestaurant.com<br />events@sluchrestaurant.com</p>
-                            </div>
-                            <div className="bg-white/5 p-6 rounded-sm border border-white/5 hover:border-primary/50 transition-colors group">
-                                <span className="text-3xl mb-4 block group-hover:scale-110 transition-transform duration-300">⏰</span>
-                                <h4 className="text-xl font-serif text-white mb-2">Hours</h4>
-                                <p className="text-white/50 text-sm">Daily: 11:00 AM - 11:00 PM<br />Happy Hour: 4:00 PM - 7:00 PM</p>
-                            </div>
+                        <div className="p-10 luxury-border glass-dark">
+                             <h5 className="text-primary font-serif italic text-lg mb-4">Valet Services</h5>
+                             <p className="text-white/40 font-light leading-relaxed">
+                                Complimentary valet parking is available at the main entrance for all our guests. Experience seamless arrival and departure.
+                             </p>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    {/* Simple Contact Form */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="bg-accent/30 p-8 rounded-sm border border-white/10"
-                    >
-                        <h3 className="text-2xl font-serif text-white mb-6">Send us a Message</h3>
-                        <form className="space-y-6">
-                            <input
-                                type="text"
-                                placeholder="Your Name"
-                                className="w-full bg-dark/50 border border-white/10 rounded-sm p-4 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-white/30"
-                            />
-                            <input
-                                type="email"
-                                placeholder="Your Email"
-                                className="w-full bg-dark/50 border border-white/10 rounded-sm p-4 text-white focus:outline-none focus:border-primary transition-colors placeholder:text-white/30"
-                            />
-                            <textarea
-                                rows="4"
-                                placeholder="Your Message"
-                                className="w-full bg-dark/50 border border-white/10 rounded-sm p-4 text-white focus:outline-none focus:border-primary transition-colors resize-none placeholder:text-white/30"
-                            ></textarea>
-                            <Button
-                                type="button"
-                                className="w-full"
-                            >
-                                Send Message
-                            </Button>
-                        </form>
-                    </motion.div>
+                    {/* Form */}
+                    <div className="lg:col-span-7">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-white/[0.02] border border-white/10 p-12 md:p-16 relative"
+                        >
+                            <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
+                            <h3 className="text-4xl font-display text-white mb-12">Send an Inquiry</h3>
+                            
+                            <form className="space-y-10">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                    <div className="border-b border-white/10 focus-within:border-primary transition-colors pb-2">
+                                        <label className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-2 block">Your Name</label>
+                                        <input type="text" className="w-full bg-transparent text-white focus:outline-none placeholder:text-white/10 font-light" placeholder="e.g. John Doe" />
+                                    </div>
+                                    <div className="border-b border-white/10 focus-within:border-primary transition-colors pb-2">
+                                        <label className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-2 block">Email Address</label>
+                                        <input type="email" className="w-full bg-transparent text-white focus:outline-none placeholder:text-white/10 font-light" placeholder="john@example.com" />
+                                    </div>
+                                </div>
+                                <div className="border-b border-white/10 focus-within:border-primary transition-colors pb-2">
+                                    <label className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-2 block">Subject</label>
+                                    <select className="w-full bg-transparent text-white focus:outline-none appearance-none font-light">
+                                        <option>General Inquiry</option>
+                                        <option>Private Event</option>
+                                        <option>Press & Media</option>
+                                        <option>Careers</option>
+                                    </select>
+                                </div>
+                                <div className="border-b border-white/10 focus-within:border-primary transition-colors pb-2">
+                                    <label className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-2 block">Message</label>
+                                    <textarea rows="4" className="w-full bg-transparent text-white focus:outline-none placeholder:text-white/10 font-light resize-none" placeholder="How can we assist you?" />
+                                </div>
+                                
+                                <button className="group flex items-center gap-4 text-primary uppercase tracking-[0.5em] text-[10px] font-bold hover:text-white transition-colors duration-500">
+                                    Submit Message <Send className="w-3 h-3 group-hover:translate-x-2 transition-transform" />
+                                </button>
+                            </form>
+                        </motion.div>
+                    </div>
                 </div>
 
-                {/* Map Section */}
-                <div className="w-full h-[400px] border border-white/10 rounded-sm overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                {/* Map */}
+                <div className="mt-32 aspect-video w-full luxury-border grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-1000 overflow-hidden">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15282225.79979146!2d73.7250245393691!3d20.750301298393563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1587818542745!5m2!1sen!2sin"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.95373531531615!3d-37.81627973792326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e5610!2sMelbourne%20Central!5e0!3m2!1sen!2sau!4v1651234567890!5m2!1sen!2sau"
                         width="100%"
                         height="100%"
-                        frameBorder="0"
                         style={{ border: 0 }}
                         allowFullScreen=""
-                        aria-hidden="false"
-                        tabIndex="0"
-                    ></iframe>
+                        loading="lazy"
+                    />
                 </div>
             </section>
 
@@ -125,3 +145,4 @@ const ContactPage = () => {
 }
 
 export default ContactPage
+
