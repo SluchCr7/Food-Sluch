@@ -29,14 +29,6 @@ const Header = () => {
                 <div className="container mx-auto px-6 flex items-center justify-between">
                     {/* Brand */}
                     <Link href="/" className="group flex items-center gap-4">
-                        <div className="relative w-12 h-12 md:w-16 md:h-16 transition-transform duration-500 group-hover:scale-110">
-                            <Image
-                                src="/assets/images/logo.svg"
-                                alt="Sluch"
-                                fill
-                                className='object-contain filter invert opacity-80 group-hover:opacity-100 transition-opacity'
-                            />
-                        </div>
                         <div className="flex flex-col">
                             <span className='text-2xl md:text-3xl font-display text-white tracking-widest uppercase'>Sluch</span>
                             <span className="text-[8px] tracking-[0.6em] text-primary uppercase ml-1">Culinary Art</span>
@@ -61,4 +53,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Header
